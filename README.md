@@ -1,0 +1,2 @@
+# simpress
+Simple document server
