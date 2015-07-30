@@ -1,0 +1,40 @@
+#!/usr/bin/env python
+
+import argparse
+import logging
+import os
+import shutil
+import sys
+
+import simpress.logger
+
+if __name__ == '__main__':
+    simpress.logger.setup()
+    logger = simpress.logger.logger()
+
+    parser = argparse.ArgumentParser()
+    parser.add_argument('target_dir')
+    args = parser.parse_args()
+
+    if os.path.exists(args.target_dir):
+        parser.error('Target directory is already exists. Specify the new one.')
+
+    logger.info('build theme')
+    shutil.copytree(
+        os.path.join(os.path.dirname(__file__), 'themes', 'default'),
+        args.target_dir)
+
+    logger.info('prepare bootstrap script')
+    shutil.copy(
+        os.path.join(os.path.dirname(__file__), 'press.py'), 
+        args.target_dir)
+
+    logger.info('prepare index.md')
+    with open(os.path.join(args.target_dir, 'index.md'), 'w') as f:
+        f.write('# index\n\nput your contents. enjoy!\n')
+
+    logger.info('*** setup completed! ***')
+    logger.info('')
+
+    logger.info('move to "%s" and run "./press.py preview" to '
+                'start Simpress preview server' % args.target_dir)
