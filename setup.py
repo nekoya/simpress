@@ -4,7 +4,7 @@ setup(
     name='simpress',
     packages=['simpress'],
     entry_points={"console_scripts": ["press-init=simpress.commands:init"]},
-    version='0.1.0',
+    version='0.1.1',
     author='Ryo Miyake',
     author_email='ryo.studiom@gmail.com',
     description="Simple document system by GitHub flavored Markdown.",
