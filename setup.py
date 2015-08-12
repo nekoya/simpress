@@ -8,7 +8,7 @@ setup(
     author='Ryo Miyake',
     author_email='ryo.studiom@gmail.com',
     description="Simple document system by GitHub flavored Markdown.",
-    long_description=open('README.md').read(),
+    long_description=open('README.rst').read(),
     url='http://github.com/nekoya/simpress',
     license='MIT',
     classifiers=[
